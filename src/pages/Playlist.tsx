@@ -8,15 +8,15 @@ interface PlaylistProps {
 
 const songs = [
   {
-    title: "Lagu Romantis 1",
+    title: "Lagu jaman PDKT",
     url: "https://open.spotify.com/track/45kauLYtwLqqGYHn497rDP?si=02eca06d7cc0425e"
   },
   {
-    title: "Lagu Romantis 2", 
+    title: "Lagu Kita", 
     url: "https://open.spotify.com/track/6IPwKM3fUUzlElbvKw2sKl?si=e49686baf308491a"
   },
   {
-    title: "Lagu Romantis 3",
+    title: "Lagu Anak Cumy",
     url: "https://open.spotify.com/track/1oAwsWBovWRIp7qLMGPIet?si=ce669e4523e04638"
   }
 ];
