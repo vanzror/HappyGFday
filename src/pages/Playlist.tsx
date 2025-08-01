@@ -8,18 +8,15 @@ interface PlaylistProps {
 
 const songs = [
   {
-    title: "Lagu Romantis 1",
-    spotifyId: "45kauLYtwLqqGYHn497rDP",
+    title: "Lagu jaman PDKT",
     url: "https://open.spotify.com/track/45kauLYtwLqqGYHn497rDP?si=02eca06d7cc0425e"
   },
   {
-    title: "Lagu Romantis 2",
-    spotifyId: "6IPwKM3fUUzlElbvKw2sKl", 
+    title: "Lagu Kita", 
     url: "https://open.spotify.com/track/6IPwKM3fUUzlElbvKw2sKl?si=e49686baf308491a"
   },
   {
-    title: "Lagu Romantis 3",
-    spotifyId: "1oAwsWBovWRIp7qLMGPIet",
+    title: "Lagu Anak Cumy",
     url: "https://open.spotify.com/track/1oAwsWBovWRIp7qLMGPIet?si=ce669e4523e04638"
   }
 ];
@@ -36,10 +33,10 @@ const Playlist = ({ onNext }: PlaylistProps) => {
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-lg romantic-glow mb-6">
-          <div className="space-y-6">
+          <div className="space-y-4">
             {songs.map((song, index) => (
-              <div key={index} className="space-y-3">
-                <div className="flex items-center justify-between p-4 bg-pink-50 rounded-lg border border-pink-100">
+              <div key={index} className="p-4 bg-pink-50 rounded-lg border border-pink-100">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Heart className="w-5 h-5 text-pink-400" />
                     <span className="text-gray-700 font-medium">
@@ -54,22 +51,9 @@ const Playlist = ({ onNext }: PlaylistProps) => {
                     className="flex items-center gap-2 text-green-600 hover:text-green-700 transition-colors"
                   >
                     <Music className="w-4 h-4" />
-                    <span className="text-sm font-medium">Open Spotify</span>
+                    <span className="text-sm font-medium">Play</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
-                </div>
-                
-                {/* Spotify Embed Player */}
-                <div className="w-full">
-                  <iframe
-                    src={`https://open.spotify.com/embed/track/${song.spotifyId}?utm_source=generator&theme=0`}
-                    width="100%"
-                    height="152"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    className="rounded-lg"
-                  />
                 </div>
               </div>
             ))}
@@ -83,8 +67,7 @@ const Playlist = ({ onNext }: PlaylistProps) => {
         </div>
 
         <div className="text-sm text-pink-500 mb-6">
-          🎵 Player bisa langsung diputar di sini! <br/>
-          💡 Atau klik "Open Spotify" untuk buka di app
+          💡 Tip: Klik "Play" untuk membuka di Spotify
         </div>
 
         <Button 
