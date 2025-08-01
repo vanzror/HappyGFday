@@ -9,36 +9,42 @@ interface GalleryProps {
 
 const photos = [
   {
-    url: 'https://i.postimg.cc/3RdnqW70/IMG-5835.jpg',
+    url: '/images/gallery/valentine-date.jpg',
     caption: 'Waktu Valentine!!!'
   },
   {
-    url: 'https://i.postimg.cc/KvsCvXp2/08708-B7-F-30-B6-40-D5-B827-81379359-BD1-A-4314-00001-E466-DB3397-E.jpg',
+    url: '/images/gallery/makan-enak.JPG',
     caption: 'KITA MAM ENAKKK'
   },
   {
-    url: 'https://i.postimg.cc/J0zdMKb0/Photo-on-25-11-24-at-00-13-2.jpg',
+    url: '/images/gallery/waktu-intim.JPG',
     caption: 'waktu intim kita'
   },
   {
-    url: 'https://i.postimg.cc/y8Zp1DSm/IMG-1010.jpg',
+    url: '/images/gallery/photobox-pertama.JPG',
     caption: 'pertama kali photobox'
   },
   {
-    url: 'https://i.postimg.cc/hj6pRgPy/IMG-2758.jpg',
+    url: '/images/gallery/liburan-bareng.jpg',
     caption: 'liburan bareng'
   }
 ];
 
 const Gallery = ({ onNext }: GalleryProps) => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
+  const [imageLoading, setImageLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
 
   const nextPhoto = () => {
     setCurrentPhoto((prev) => (prev + 1) % photos.length);
+    setImageLoading(true);
+    setImageError(false);
   };
 
   const prevPhoto = () => {
     setCurrentPhoto((prev) => (prev - 1 + photos.length) % photos.length);
+    setImageLoading(true);
+    setImageError(false);
   };
 
   return (
@@ -53,14 +59,35 @@ const Gallery = ({ onNext }: GalleryProps) => {
 
         <div className="relative mb-6">
           <div className="bg-white p-4 rounded-2xl shadow-lg romantic-glow">
-            <img
-              src={photos[currentPhoto].url}
-              alt={photos[currentPhoto].caption}
-              className="w-full h-80 object-cover rounded-xl"
-              onError={(e) => {
-                e.currentTarget.src = '/placeholder.svg';
-              }}
-            />
+            <div className="relative">
+              {imageLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-pink-50 rounded-xl">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-500"></div>
+                </div>
+              )}
+              
+              {imageError ? (
+                <div className="w-full h-80 bg-pink-50 rounded-xl flex items-center justify-center">
+                  <div className="text-center text-pink-400">
+                    <Camera className="w-12 h-12 mx-auto mb-2" />
+                    <p>Foto tidak dapat dimuat</p>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={photos[currentPhoto].url}
+                  alt={photos[currentPhoto].caption}
+                  className="w-full h-80 object-cover rounded-xl"
+                  loading="lazy"
+                  onLoad={() => setImageLoading(false)}
+                  onError={(e) => {
+                    console.error('Failed to load image:', photos[currentPhoto].url);
+                    setImageLoading(false);
+                    setImageError(true);
+                  }}
+                />
+              )}
+            </div>
             
             <div className="mt-4 p-3 bg-pink-50 rounded-lg">
               <p className="text-pink-700 font-medium">
@@ -92,7 +119,11 @@ const Gallery = ({ onNext }: GalleryProps) => {
           {photos.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentPhoto(index)}
+              onClick={() => {
+                setCurrentPhoto(index);
+                setImageLoading(true);
+                setImageError(false);
+              }}
               className={`w-3 h-3 rounded-full transition-all ${
                 index === currentPhoto
                   ? 'bg-pink-500 scale-125'

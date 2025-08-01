@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import PageContainer from '@/components/PageContainer';
-import { Heart, Calendar } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 interface WelcomeProps {
   onNext: () => void;
@@ -26,7 +26,6 @@ const Welcome = ({ onNext }: WelcomeProps) => {
         </h1>
         
         <div className="flex items-center justify-center gap-2 text-pink-500 mb-8">
-          <Calendar className="w-5 h-5" />
           <p className="text-lg">
             1 Agustus 2025 — Hari kamu, hari kita 💖
           </p>
