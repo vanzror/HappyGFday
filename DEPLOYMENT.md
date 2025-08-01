@@ -37,6 +37,13 @@ firebase deploy
 - Bisa dibuka di HP mana saja dengan internet
 - Link permanen dan bisa dishare
 
+## 🎉 **WEBSITE SUDAH LIVE!**
+**URL: https://vanzror.github.io/HappyGFday/**
+
+✅ Website bisa diakses dari HP mana saja
+✅ Link permanen untuk dishare
+✅ Semua foto lokal sudah terintegrasi
+
 ## 📱 Untuk Testing Lokal di HP:
 - Pastikan HP dan laptop di WiFi yang sama
 - Buka `http://192.168.1.2:8080` di browser HP
