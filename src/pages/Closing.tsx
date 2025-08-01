@@ -1,8 +1,13 @@
 import { Button } from '@/components/ui/button';
 import PageContainer from '@/components/PageContainer';
-import { Heart, Share, Sparkles } from 'lucide-react';
+import { Heart, Share, Sparkles, ArrowLeft, RotateCcw } from 'lucide-react';
 
-const Closing = () => {
+interface ClosingProps {
+  onBack: () => void;
+  onRestart: () => void;
+}
+
+const Closing = ({ onBack, onRestart }: ClosingProps) => {
   const shareToWhatsApp = () => {
     const message = encodeURIComponent(
       `💖 Happy Girlfriend Day! 💖\n\nAku udah buatin website romantis khusus buat hari spesial ini. Liat yuk! ✨\n\n${window.location.origin}`
@@ -57,6 +62,28 @@ const Closing = () => {
         </div>
 
         <div className="space-y-4">
+          <div className="flex gap-3 justify-center mb-4">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={onBack}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Button>
+            
+            <Button 
+              variant="romantic" 
+              size="lg"
+              onClick={onRestart}
+              className="flex items-center gap-2"
+            >
+              <RotateCcw className="w-4 h-4" />
+              Mulai dari Awal
+            </Button>
+          </div>
+          
           <Button 
             variant="romantic" 
             size="lg"

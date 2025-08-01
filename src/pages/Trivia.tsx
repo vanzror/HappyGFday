@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import PageContainer from '@/components/PageContainer';
-import { Brain, Trophy, Sparkles } from 'lucide-react';
+import { Brain, Trophy, Sparkles, ArrowLeft } from 'lucide-react';
 
 interface TriviaProps {
   onNext: () => void;
+  onBack: () => void;
 }
 
 const questions = [
@@ -50,7 +51,7 @@ const questions = [
   }
 ];
 
-const Trivia = ({ onNext }: TriviaProps) => {
+const Trivia = ({ onNext, onBack }: TriviaProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [romanticRating, setRomanticRating] = useState(5);
@@ -121,13 +122,25 @@ const Trivia = ({ onNext }: TriviaProps) => {
             </div>
           </div>
           
-          <Button 
-            variant="romantic" 
-            size="lg"
-            onClick={onNext}
-          >
-            Next - Dengerin Playlist 🎵
-          </Button>
+          <div className="flex gap-3 justify-center">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={onBack}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Button>
+            
+            <Button 
+              variant="romantic" 
+              size="lg"
+              onClick={onNext}
+            >
+              Next - Dengerin Playlist 🎵
+            </Button>
+          </div>
         </div>
       </PageContainer>
     );

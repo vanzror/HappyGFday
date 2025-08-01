@@ -1,9 +1,10 @@
 import { Button } from '@/components/ui/button';
 import PageContainer from '@/components/PageContainer';
-import { Music, ExternalLink, Heart } from 'lucide-react';
+import { Music, ExternalLink, Heart, ArrowLeft } from 'lucide-react';
 
 interface PlaylistProps {
   onNext: () => void;
+  onBack: () => void;
 }
 
 const songs = [
@@ -21,7 +22,7 @@ const songs = [
   }
 ];
 
-const Playlist = ({ onNext }: PlaylistProps) => {
+const Playlist = ({ onNext, onBack }: PlaylistProps) => {
   return (
     <PageContainer className="bg-gradient-to-br from-indigo-50 to-pink-100">
       <div className="text-center max-w-lg mx-auto fade-in-up">
@@ -70,13 +71,25 @@ const Playlist = ({ onNext }: PlaylistProps) => {
           💡 Tip: Klik "Play" untuk membuka di Spotify
         </div>
 
-        <Button 
-          variant="romantic" 
-          size="lg"
-          onClick={onNext}
-        >
-          Next - Pesan Terakhir 💌
-        </Button>
+        <div className="flex gap-3 justify-center">
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={onBack}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Button>
+          
+          <Button 
+            variant="romantic" 
+            size="lg"
+            onClick={onNext}
+          >
+            Next - Pesan Terakhir 💌
+          </Button>
+        </div>
       </div>
     </PageContainer>
   );

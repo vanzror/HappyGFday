@@ -9,13 +9,17 @@ import Closing from './Closing';
 const Index = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
+  const goNext = () => setCurrentPage(prev => prev + 1);
+  const goBack = () => setCurrentPage(prev => prev - 1);
+  const restart = () => setCurrentPage(0);
+
   const pages = [
-    <Welcome onNext={() => setCurrentPage(1)} />,
-    <Gallery onNext={() => setCurrentPage(2)} />,
-    <LoveLetter onNext={() => setCurrentPage(3)} />,
-    <Trivia onNext={() => setCurrentPage(4)} />,
-    <Playlist onNext={() => setCurrentPage(5)} />,
-    <Closing />
+    <Welcome onNext={goNext} />,
+    <Gallery onNext={goNext} onBack={goBack} />,
+    <LoveLetter onNext={goNext} onBack={goBack} />,
+    <Trivia onNext={goNext} onBack={goBack} />,
+    <Playlist onNext={goNext} onBack={goBack} />,
+    <Closing onBack={goBack} onRestart={restart} />
   ];
 
   return (

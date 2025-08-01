@@ -1,12 +1,13 @@
 import { Button } from '@/components/ui/button';
 import PageContainer from '@/components/PageContainer';
-import { Heart, Mail } from 'lucide-react';
+import { Heart, Mail, ArrowLeft } from 'lucide-react';
 
 interface LoveLetterProps {
   onNext: () => void;
+  onBack: () => void;
 }
 
-const LoveLetter = ({ onNext }: LoveLetterProps) => {
+const LoveLetter = ({ onNext, onBack }: LoveLetterProps) => {
   return (
     <PageContainer className="bg-gradient-to-br from-pink-50 to-peach-50">
       <div className="max-w-2xl mx-auto fade-in-up">
@@ -59,13 +60,25 @@ const LoveLetter = ({ onNext }: LoveLetterProps) => {
         </div>
 
         <div className="text-center mt-8">
-          <Button 
-            variant="romantic" 
-            size="lg"
-            onClick={onNext}
-          >
-            Next - Main Trivia 🎯
-          </Button>
+          <div className="flex gap-3 justify-center">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={onBack}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Button>
+            
+            <Button 
+              variant="romantic" 
+              size="lg"
+              onClick={onNext}
+            >
+              Next - Main Trivia 🎯
+            </Button>
+          </div>
         </div>
       </div>
     </PageContainer>

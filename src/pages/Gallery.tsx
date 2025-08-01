@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import PageContainer from '@/components/PageContainer';
-import { ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Camera, ArrowLeft } from 'lucide-react';
 
 interface GalleryProps {
   onNext: () => void;
+  onBack: () => void;
 }
 
 const photos = [
@@ -30,7 +31,7 @@ const photos = [
   }
 ];
 
-const Gallery = ({ onNext }: GalleryProps) => {
+const Gallery = ({ onNext, onBack }: GalleryProps) => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const [imageLoading, setImageLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
@@ -137,13 +138,25 @@ const Gallery = ({ onNext }: GalleryProps) => {
           {currentPhoto + 1} dari {photos.length} foto
         </div>
 
-        <Button 
-          variant="romantic" 
-          size="lg"
-          onClick={onNext}
-        >
-          Next - Baca Surat Cinta 💌
-        </Button>
+        <div className="flex gap-3 justify-center">
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={onBack}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </Button>
+          
+          <Button 
+            variant="romantic" 
+            size="lg"
+            onClick={onNext}
+          >
+            Next - Baca Surat Cinta 💌
+          </Button>
+        </div>
       </div>
     </PageContainer>
   );
