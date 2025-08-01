@@ -2,39 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Romantic Girlfriend Day Design System - Feminine & Soft */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Romantic Pink & Peach Palette */
+    --background: 340 100% 97%;
+    --foreground: 330 30% 25%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 340 100% 99%;
+    --card-foreground: 330 30% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 340 100% 99%;
+    --popover-foreground: 330 30% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 340 80% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 20 100% 90%;
+    --secondary-foreground: 330 30% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 340 50% 95%;
+    --muted-foreground: 330 20% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 20 100% 85%;
+    --accent-foreground: 330 30% 25%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 340 30% 85%;
+    --input: 340 30% 85%;
+    --ring: 340 80% 65%;
+
+    /* Custom romantic colors */
+    --romantic-pink: 340 80% 65%;
+    --soft-peach: 20 100% 85%;
+    --light-pink: 340 100% 95%;
+    --deep-pink: 340 90% 50%;
+    --cream: 40 100% 97%;
+
+    /* Romantic gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(var(--romantic-pink)), hsl(var(--soft-peach)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--light-pink)), hsl(var(--cream)));
+    --gradient-heart: linear-gradient(45deg, hsl(var(--romantic-pink)), hsl(var(--deep-pink)));
+
+    /* Shadows & Effects */
+    --shadow-romantic: 0 10px 30px -10px hsl(var(--romantic-pink) / 0.3);
+    --shadow-soft: 0 4px 20px -5px hsl(var(--romantic-pink) / 0.2);
+    --glow-romantic: 0 0 30px hsl(var(--romantic-pink) / 0.4);
 
     --radius: 0.5rem;
 
@@ -100,6 +116,87 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Inter',sans-serif];
+    background: var(--gradient-soft);
+    min-height: 100vh;
+  }
+}
+
+/* Romantic Animations */
+@layer utilities {
+  .floating-hearts {
+    animation: float 3s ease-in-out infinite alternate;
+  }
+
+  .gentle-bounce {
+    animation: gentleBounce 2s ease-in-out infinite;
+  }
+
+  .romantic-glow {
+    box-shadow: var(--glow-romantic);
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  .heart-beat {
+    animation: heartBeat 1.5s ease-in-out infinite;
+  }
+
+  .confetti-fall {
+    animation: confettiFall 3s ease-out;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heartBeat {
+  0%, 50%, 100% { transform: scale(1); }
+  25%, 75% { transform: scale(1.1); }
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(360deg);
   }
 }
